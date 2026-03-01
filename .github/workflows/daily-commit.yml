@@ -28,4 +28,4 @@ jobs:
           git commit -m "Automated daily commit $(date -u)" || echo "No changes to commit"
 
       - name: Push changes
-        run: git pushi
+        run: git push
