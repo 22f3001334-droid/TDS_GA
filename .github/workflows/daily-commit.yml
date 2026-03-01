@@ -1,9 +1,12 @@
 name: Daily Automated Commit
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: '17 3 * * *'   # Runs daily at 03:17 UTC (fixed time, no wildcards)
-  workflow_dispatch:        # Allows manual trigger
+  workflow_dispatch:
 
 jobs:
   daily-commit:
@@ -28,4 +31,5 @@ jobs:
           git commit -m "Automated daily commit $(date -u)" || echo "No changes to commit"
 
       - name: Push changes
-        run: git push
+        run: |
+          git push
